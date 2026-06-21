@@ -45,7 +45,16 @@ See [NOTATION.md](NOTATION.md) for operator precedence and edge cases. See [EXAM
 
 4. **Ask for approval** — "Does this match your intent? Reply yes to proceed or correct any step."
 
-5. **On approval** — output the validated plan in a format `grok-orchestrator` can consume (see [NOTATION.md](NOTATION.md) §handoff).
+5. **On approval** — emit the validated plan as a JSON block tagged `// EXEC_PLAN` that `grok-orchestrator` consumes. Minimal node shape:
+   ```json
+   // EXEC_PLAN
+   { "entry": "n1", "nodes": [
+     { "id": "n1", "action": "analyze", "type": "step", "timeout": 60 },
+     { "id": "n2", "action": "split?", "type": "decision", "condition": "complexity > 5", "yes": "n3", "no": "n4" },
+     { "id": "n3", "action": "refactor", "type": "step", "repeat": 2 }
+   ] }
+   ```
+   Node `type` is one of `step | decision | parallel | loop | merge`. Optional keys: `timeout` (s), `repeat` (N), `until` (loop cond), `siblings` (parallel), `halt: true` (`!`). Full reference: [NOTATION.md](NOTATION.md) §handoff.
 
 ## Completion criterion
 

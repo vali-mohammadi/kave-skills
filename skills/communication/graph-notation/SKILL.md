@@ -21,7 +21,7 @@ The diagram is the contract — nothing runs until the user approves it.
 | `~ condition` | loop until condition | `fix ~ pass` |
 | `@Ns` | timeout in N seconds | `analyze @60s` |
 
-See [NOTATION.md](NOTATION.md) for operator precedence and edge cases.
+See [NOTATION.md](NOTATION.md) for operator precedence and edge cases. See [EXAMPLES.md](EXAMPLES.md) for 9 worked examples with diagrams.
 
 ## Steps
 

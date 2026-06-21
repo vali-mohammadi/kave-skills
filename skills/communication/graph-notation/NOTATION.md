@@ -1,5 +1,20 @@
 # Notation Reference
 
+For worked examples with diagrams, see [EXAMPLES.md](EXAMPLES.md).
+
+## Quick-ref
+
+| Symbol | Meaning | Example |
+|--------|---------|---------|
+| `@Ns` | timeout | `analyze @60s` |
+| `!` | halt on fail | `deploy ! prod` |
+| `~ condition` | loop until | `fix ~ pass` |
+| `*N` | repeat N times | `draft *3` |
+| `&` | parallel | `test & lint` |
+| `\|` | branch | `refactor \| direct` |
+| `> < =` | condition | `score > 7` |
+| `>>` | merge results | `report >>` |
+
 ## Operator precedence (highest → lowest)
 
 1. `@Ns` — timeout (binds to its step only)

@@ -1,6 +1,9 @@
 ---
 name: grok-orchestrator
 description: Executes a validated graph-notation plan by spawning headless `grok` CLI instances — one per node — coordinating them in layers (sequential, parallel, branching, looping) and verifying results before advancing. Use when the user has an approved EXEC_PLAN from graph-notation and wants to run it, or says "run the plan" / "execute" / "spawn grok" / "go".
+metadata:
+  author: kave
+  version: "1.0.0"
 ---
 
 # Grok Orchestrator

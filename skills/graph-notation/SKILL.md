@@ -1,6 +1,9 @@
 ---
 name: graph-notation
 description: Reads a numbered notation plan and renders it as a Mermaid decision-tree diagram for visual confirmation before agent execution. Use when the user writes a numbered step plan with operators (|, &, *N, >>, !, ~, @Ns, > < =), wants to visualize an agent graph or workflow, or says "draw the plan" / "confirm the flow" / "show the tree".
+metadata:
+  author: kave
+  version: "1.0.0"
 ---
 
 # Graph Notation

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Graph Notation",
+      "description": "Compact numbered notation for expressing agent workflows and decision trees. Write a plan with symbols, get a Mermaid diagram back before anything runs.",
+      "skills": [
+        "graph-notation"
+      ]
+    },
+    {
+      "title": "Grok Orchestrator",
+      "description": "Headless grok CLI orchestration — executes an approved plan by spawning grok instances layer by layer, with verification and Mermaid state tracking at each step.",
+      "skills": [
+        "grok-orchestrator"
+      ]
+    }
+  ]
+}

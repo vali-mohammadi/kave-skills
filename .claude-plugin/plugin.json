@@ -1,7 +1,7 @@
 {
   "name": "kave-skills",
   "skills": [
-    "./skills/engineering/grok-orchestrator",
-    "./skills/communication/graph-notation"
+    "./skills/graph-notation",
+    "./skills/grok-orchestrator"
   ]
 }

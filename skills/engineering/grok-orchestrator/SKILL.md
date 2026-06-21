@@ -12,7 +12,7 @@ See [EXECUTION.md](EXECUTION.md) for spawn patterns, session naming, and output 
 
 ## Steps
 
-1. **Ingest plan** — read the `EXEC_PLAN` JSON (from `/graph-notation` output or inline). Resolve the node graph: find `entry`, map dependencies, group into layers (nodes with no unmet deps = same layer).
+1. **Ingest plan** — read the `EXEC_PLAN` JSON (from `/graph-notation` output or inline). Resolve the node graph: find `entry`, map dependencies, group into layers (nodes with no unmet deps = same layer). Generate a `planId` for session naming: `planId=$(date +%s | md5 | cut -c1-6)`. Every grok call is tagged `<role>-<planId>-<nodeId>` where role ∈ `plan|verify|route|merge` (see [EXECUTION.md](EXECUTION.md)).
 
 2. **Render layer map** — print a Mermaid diagram showing current execution state before starting:
    - pending nodes: default style

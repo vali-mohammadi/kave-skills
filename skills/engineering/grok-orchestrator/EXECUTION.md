@@ -63,24 +63,39 @@ text=$(grok -p "..." --output-format streaming-json --always-approve \
 ```
 
 ## Verifier prompt template
+
+Battle-tested rules: verdict is the **first token**, no preamble; judge **strictly** against the goal only (not general quality); **default to FAIL** when the output is missing, truncated, or you are unsure.
+
 ```
-Verify this output meets the goal: "<action>"
-Reply on the first line: PASS or FAIL:<short reason>
-Do not add anything else before the verdict.
+You are a strict verifier. Judge ONLY whether the output below achieves this goal:
+GOAL: "<action>"
+
+Rules:
+- First token of your reply MUST be PASS or FAIL — nothing before it.
+- PASS only if the goal is fully met. If partial, ambiguous, empty, or truncated → FAIL.
+- After FAIL add a colon and one short reason, e.g. FAIL:tests still red.
 
 Output to verify:
 <node_output>
 ```
+Parse: read the first whitespace-delimited token. Treat anything other than `PASS` as failure.
 
 ## Decision routing prompt template
+
+Same discipline: first-token verdict, no hedging, default to the safer branch (`NO`) when unsure.
+
 ```
-Does the following output satisfy this condition: "<condition>"?
-Reply on the first line: YES or NO
-Do not add anything else before the verdict.
+You are a router. Decide ONLY whether this condition holds for the output below:
+CONDITION: "<condition>"
+
+Rules:
+- First token of your reply MUST be YES or NO — nothing before it.
+- If the output is insufficient to decide → answer NO.
 
 Output:
 <node_output>
 ```
+Parse: read the first token. Treat anything other than `YES` as `NO`.
 
 ## Mermaid state diagram template
 ```

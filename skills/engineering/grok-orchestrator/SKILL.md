@@ -41,14 +41,14 @@ See [EXECUTION.md](EXECUTION.md) for spawn patterns, session naming, and output 
            --output-format json \
            --always-approve
       ```
-      Parse `PASS` / `FAIL`. On `FAIL`: retry up to node's `repeat` count, then halt if `!` flag set.
+      Verdict is the **first token**; treat anything other than `PASS` as failure (default-to-FAIL on empty/truncated output). Use the strict [EXECUTION.md](EXECUTION.md) verifier template. On failure: retry up to node's `repeat` count, then halt if `!` flag set.
 
    d. **Route decisions** — for `decision` nodes, pass the result to a routing call:
       ```
       grok -p "Given this result, does '<condition>' hold? Reply YES or NO. Result: <output>" \
            -s "route-<nodeId>" --output-format json --always-approve
       ```
-      Follow `yes` or `no` edge in the node graph.
+      First token only; treat anything other than `YES` as `NO` (default to the safer `no` edge when unsure). Follow that edge in the node graph.
 
    e. **Update diagram** — re-render the Mermaid map with updated node colors after each layer.
 

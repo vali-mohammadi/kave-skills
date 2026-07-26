@@ -136,7 +136,7 @@ Two checks, both cheap, both catching failures that are silent otherwise.
 
 It scans every `.md` for those literals plus built-in patterns — currency amounts, payment language, email addresses, contract IDs — and prints `CLEAN` or `FAIL` with file and line. Generated PDFs mirror their markdown source, so markdown coverage is enough. Review each hit: some are legitimate, most are not. **Do not share the folder until this passes.**
 
-**Rendering.** For any right-to-left PDF, rasterize and look at it — see MECHANICS.md. Extracted text is not evidence.
+**Rendering.** For any right-to-left PDF, rasterize and look at it — see MECHANICS.md. Extracted text is not evidence, and neither is a glance: check the word order of every multi-word Latin run against the source. Client and product names are exactly what breaks.
 
 ## Stage 5 — Seed the tracker
 
@@ -164,6 +164,7 @@ Duplicate a genuinely shared action — one client call answering questions for 
 | Seeding a full task breakdown | Overrides the lead's judgment — the opposite of what was asked |
 | Reporting "done" after writing files | Nobody but you can see the folder until it is shared manually |
 | Diagnosing an RTL PDF from extracted text | Correct output looks broken; you rewrite good copy to fix a bug that isn't there. See MECHANICS.md |
+| Skimming a rendered RTL page instead of reading it | Multi-word Latin runs reverse while single words look perfect — the client's own name ships backwards |
 | Putting commercial terms in the context file | It is designed to be pasted into third-party LLMs — anything in it has left the building |
 | Writing the roster into the context file from memory | Assignments go to the wrong people; query the tracker instead |
 | Asserting the redaction rather than running the audit | Being careful is not evidence. A leaked fee is silent, and irreversible once shared |

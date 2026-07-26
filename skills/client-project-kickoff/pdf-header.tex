@@ -1,0 +1,28 @@
+% pdf-header.tex — shared preamble for the project's generated PDFs.
+% Pass with:  -H pdf-header.tex
+
+% --- Long URLs -------------------------------------------------------------
+% Asset links are long and contain no natural break points, so \url{} sets them
+% as one unbreakable box that runs past the margin. `xurl` would fix this but is
+% not in BasicTeX, so widen url's own break set to every letter and digit.
+% Deferred: pandoc injects header-includes above \usepackage{hyperref}, which is
+% what loads `url` — \UrlBreaks does not exist yet at this point in the preamble.
+\AtBeginDocument{%
+  \def\UrlBreaks{%
+    \do\.\do\@\do\/\do\!\do\_\do\|\do\;\do\>\do\]\do\)\do\}\do\?\do\&\do\+\do\=%
+    \do\#\do\-%
+    \do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m%
+    \do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z%
+    \do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M%
+    \do\N\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X\do\Y\do\Z%
+    \do\0\do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9}%
+}
+
+% --- Justification ---------------------------------------------------------
+% Persian is not hyphenated in typography, but babel will break at a ZWNJ and
+% insert a hyphen ("دامنه-/ی"). Suppress hyphenated breaks and give TeX slack to
+% justify without them. Harmless for the English documents, so applied to both
+% and kept in one file.
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\emergencystretch=3em

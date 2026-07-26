@@ -50,6 +50,7 @@ Teams need the boundaries as much as the work — keep the exclusions in.
 ```
 <Account>/My Drive/Projects/<Client> — <Project>/
   CONTEXT.md                ← working context for the team's AI sessions
+  DECISIONS.md              ← why the scope looks like this
   01 <Team> Brief/          ← one numbered folder per team, ordered by when they start
   02 <Team> Brief/
   03 Source Assets/         ← always last
@@ -105,7 +106,39 @@ Compose it from three sources — house context from the org-context skill if in
 
 Stamp it with a snapshot date and name the authoritative sources, so a stale copy cannot quietly masquerade as current. Ship it in the same languages as the briefs.
 
-## Stage 3 — Seed the tracker
+### The decision log
+
+`DECISIONS.md` at the folder root. The interview produces a dozen non-obvious calls — why a flow was cut, why two tracker containers instead of one, why assets are linked rather than copied, why the contract overrode what the client asked for. Without a record, that reasoning exists only in the conversation that produced it, and the first person to ask "why wasn't the dashboard scoped?" gets no answer.
+
+Write it **during** the interview, not afterwards from memory. One row per decision:
+
+```md
+# <Client> — <Project> · Decisions
+
+| Date | Decision | Why | Decided by |
+|---|---|---|---|
+| <date> | <what was settled> | <the reasoning, including what was rejected> | <name> |
+```
+
+Record the rejected option, not just the chosen one — "we used static designs" is far less useful later than "the client asked for animation; the signed scope excludes it, so animation is separately scoped."
+
+Log decisions, not commercial terms. *"Animation excluded by contract"* belongs here; *what it would cost to add* does not.
+
+## Stage 4 — Verify before sharing
+
+Two checks, both cheap, both catching failures that are silent otherwise.
+
+**Redaction.** Run `redaction-audit.sh` over the folder, passing the sensitive strings you read in the contract:
+
+```bash
+./redaction-audit.sh "<project folder>" "£500" "58217" "<client name>"
+```
+
+It scans every `.md` for those literals plus built-in patterns — currency amounts, payment language, email addresses, contract IDs — and prints `CLEAN` or `FAIL` with file and line. Generated PDFs mirror their markdown source, so markdown coverage is enough. Review each hit: some are legitimate, most are not. **Do not share the folder until this passes.**
+
+**Rendering.** For any right-to-left PDF, rasterize and look at it — see MECHANICS.md. Extracted text is not evidence.
+
+## Stage 5 — Seed the tracker
 
 Bare minimum on purpose. The lead breaks it down, not you.
 
@@ -133,3 +166,5 @@ Duplicate a genuinely shared action — one client call answering questions for 
 | Diagnosing an RTL PDF from extracted text | Correct output looks broken; you rewrite good copy to fix a bug that isn't there. See MECHANICS.md |
 | Putting commercial terms in the context file | It is designed to be pasted into third-party LLMs — anything in it has left the building |
 | Writing the roster into the context file from memory | Assignments go to the wrong people; query the tracker instead |
+| Asserting the redaction rather than running the audit | Being careful is not evidence. A leaked fee is silent, and irreversible once shared |
+| Writing the decision log after the fact | The reasoning is already gone; you record conclusions and lose the rejected options |

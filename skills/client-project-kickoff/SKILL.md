@@ -12,6 +12,8 @@ Turns a signed client contract into internal delivery artifacts: a shared-drive 
 
 **Core principle:** internal teams get the *working scope*, never the *commercial terms*. What the deal was worth is never their input.
 
+**If an org-context skill is installed** (house terminology, people roster, document templates), read it first — its conventions override the generic defaults here.
+
 ## Stage 1 — Interview first
 
 Produce nothing until these are answered. Ask one at a time, with a recommended answer where the question is a preference rather than a fact.
@@ -47,6 +49,7 @@ Teams need the boundaries as much as the work — keep the exclusions in.
 
 ```
 <Account>/My Drive/Projects/<Client> — <Project>/
+  CONTEXT.md                ← working context for the team's AI sessions
   01 <Team> Brief/          ← one numbered folder per team, ordered by when they start
   02 <Team> Brief/
   03 Source Assets/         ← always last
@@ -84,6 +87,24 @@ A team whose phase begins only *after* another team finishes gets a **heads-up d
 - Open questions for the client
 - Assets
 
+### The context file
+
+`CONTEXT.md` at the folder root — what a team member pastes or uploads to start an AI session about this engagement. Not a brief: a brief says what to build, this says who you are, what the constraints are, and how to behave.
+
+**Treat it as leaving the building.** Used as intended, it goes straight into a third-party LLM. Apply the same redaction as the briefs; if a line would be awkward in the client's inbox, it does not belong here.
+
+Compose it from three sources — house context from the org-context skill if installed, people from the tracker (never from memory), and this engagement from the interview. Include:
+
+- Who the studio is, and who this Sprint is for
+- Teams involved and what each owns
+- What is locked, what is open, and open questions for the client
+- Hard limits and explicit exclusions
+- Tools in use on this engagement
+- **Behavioural guidance** — say when something is out of scope rather than designing it anyway; never present an open question as settled; flag gaps rather than inventing
+- **Output conventions**, so the same document type comes out the same shape regardless of who asked
+
+Stamp it with a snapshot date and name the authoritative sources, so a stale copy cannot quietly masquerade as current. Ship it in the same languages as the briefs.
+
 ## Stage 3 — Seed the tracker
 
 Bare minimum on purpose. The lead breaks it down, not you.
@@ -110,3 +131,5 @@ Duplicate a genuinely shared action — one client call answering questions for 
 | Seeding a full task breakdown | Overrides the lead's judgment — the opposite of what was asked |
 | Reporting "done" after writing files | Nobody but you can see the folder until it is shared manually |
 | Diagnosing an RTL PDF from extracted text | Correct output looks broken; you rewrite good copy to fix a bug that isn't there. See MECHANICS.md |
+| Putting commercial terms in the context file | It is designed to be pasted into third-party LLMs — anything in it has left the building |
+| Writing the roster into the context file from memory | Assignments go to the wrong people; query the tracker instead |

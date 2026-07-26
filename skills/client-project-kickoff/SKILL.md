@@ -95,7 +95,7 @@ A team whose phase begins only *after* another team finishes gets a **heads-up d
 
 Compose it from three sources — house context from the org-context skill if installed, people from the tracker (never from memory), and this engagement from the interview. Include:
 
-- Who the studio is, and who this Sprint is for
+- Who the studio is, and who this project is for
 - Teams involved and what each owns
 - What is locked, what is open, and open questions for the client
 - Hard limits and explicit exclusions

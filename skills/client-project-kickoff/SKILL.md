@@ -39,22 +39,27 @@ The gates cover what is always true. Project-specific realities surface only thr
 
 ## Default redaction list
 
-**Strip:** fees and amounts · payment terms and schedule · engagement and document IDs · client legal name and personal contact details · agency registered address · commercial terms (revision allowances, hourly rates, support entitlements)
+**Strip:** fees and amounts · payment terms and schedule · engagement and document IDs · agency registered address · commercial terms (revision allowances, hourly rates, support entitlements) · **individuals at the client** — signatory's full legal name, personal email, phone
 
-**Keep:** functional scope · timeline · deliverable format and hard limits · exclusions and out-of-scope items · asset links · process and communication channels
+**Keep:** functional scope · timeline · deliverable format and hard limits · exclusions and out-of-scope items · asset links · process and communication channels · **the client's trading name**
 
 Teams need the boundaries as much as the work — keep the exclusions in.
+
+**On the client's name:** keep the company as everyone refers to it — the team cannot build for an anonymous client, and it is already the project folder's name. Strip the *people*: the signatory's full legal name on the contract, their personal email, their phone number. "Hai Booca" stays; "Sabathania Pamilaar, thania@…" does not. Where a named individual genuinely matters to the work, a first name and role is enough.
 
 ## Stage 2 — Drive folder and briefs
 
 ```
 <Account>/My Drive/Projects/<Client> — <Project>/
-  CONTEXT.md                ← working context for the team's AI sessions
-  DECISIONS.md              ← why the scope looks like this
+  CONTEXT (EN).md + .pdf    ← working context for the team's AI sessions
+  CONTEXT (FA).md + .pdf       one pair per language, like the briefs
+  DECISIONS.md              ← why the scope looks like this (internal, English only)
   01 <Team> Brief/          ← one numbered folder per team, ordered by when they start
   02 <Team> Brief/
   03 Source Assets/         ← always last
 ```
+
+`CONTEXT` ships in every language the briefs do — a team member briefing an AI session needs it in the language they work in. `DECISIONS.md` is an internal record, English only; it is never handed to anyone as a deliverable.
 
 `<Account>` is the literal mount directory (e.g. `GoogleDrive-you@company.com`); the separator in the project name is an em dash. Files: `<Doc> (EN).md` with `<Doc> (EN).pdf` beside it, one pair per language.
 
@@ -90,7 +95,7 @@ A team whose phase begins only *after* another team finishes gets a **heads-up d
 
 ### The context file
 
-`CONTEXT.md` at the folder root — what a team member pastes or uploads to start an AI session about this engagement. Not a brief: a brief says what to build, this says who you are, what the constraints are, and how to behave.
+`CONTEXT (EN).md` and one per additional language, at the folder root — what a team member pastes or uploads to start an AI session about this engagement. Not a brief: a brief says what to build, this says who you are, what the constraints are, and how to behave.
 
 **Treat it as leaving the building.** Used as intended, it goes straight into a third-party LLM. Apply the same redaction as the briefs; if a line would be awkward in the client's inbox, it does not belong here.
 

@@ -31,6 +31,19 @@ The agent proposes a run tag (e.g. `jun21`), creates branch `autoresearch/jun21`
 |-------|-------------|
 | `/graph-notation` | Turns a numbered notation plan into a Mermaid decision tree. Confirms before any agent fires. |
 | `/grok-orchestrator` | Executes the confirmed plan by spawning headless `grok` CLI instances layer by layer. |
+| `/client-project-kickoff` | Turns a signed scope of work into internal delivery artifacts — folder structure, redacted team briefs, an AI context file, a decision log, and a thinly seeded tracker. |
+
+### client-project-kickoff
+
+Ships three tools alongside `SKILL.md`:
+
+- **`redaction-audit.sh`** — greps generated documents for fees, payment terms, contact details, and contract IDs. Prints an explicit `CLEAN`/`FAIL`, exits non-zero on findings. BSD-portable, so it works on stock macOS.
+- **`ltr-runs.lua`** — pandoc filter that stops multi-word Latin runs reversing inside right-to-left text. Without it, `Hai Booca` renders as `Booca Hai` in a Persian PDF, while single words look perfect. No-ops on non-RTL documents.
+- **`pdf-header.tex`** — shared LaTeX preamble: URL breaking, and suppressing hyphenated line breaks in Persian.
+
+`MECHANICS.md` covers the RTL pipeline in full, including why verification must rasterize the PDF rather than read its text.
+
+Works standalone. Pair it with a private org-context skill to override the generic defaults with house conventions.
 
 ## Notation quick-ref
 
@@ -45,7 +58,7 @@ The agent proposes a run tag (e.g. `jun21`), creates branch `autoresearch/jun21`
 | `> < =` | condition | `score > 7` |
 | `>>` | merge results | `report >>` |
 
-See [`skills/communication/graph-notation/EXAMPLES.md`](skills/communication/graph-notation/EXAMPLES.md) for 9 worked examples.
+See [`skills/graph-notation/EXAMPLES.md`](skills/graph-notation/EXAMPLES.md) for 9 worked examples.
 
 ## Metric
 
